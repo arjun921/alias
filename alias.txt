@@ -1,0 +1,31 @@
+#Custom Aliases
+alias pi="ssh pi@raspberrypi.local"
+alias pingpi="ping raspberrypi.local"
+alias apy="source activate idp3"
+alias cdw="cd ~/working_directory/"
+alias py="python"
+alias nb="jupyter notebook"
+alias today="py /Users/arjun921/working_directory/refactored-lamp/dailyPrograms/today.py | pbcopy && cd $(pbpaste)"
+alias raj="cd /Users/arjun921/working_directory/rajasthan_option1 && atom UI"
+alias ser="cd /Users/arjun921/working_directory/rajasthan-server/server && source activate raj && py server.py "
+alias ser2="source activate raj && py /Users/arjun921/working_directory/rajScreenie/dummy_setup.py"
+alias pa="cd /Users/arjun921/working_directory/PA && source activate PA"
+alias http="ifconfig | grep "inet " | grep -v 127.0.0.1 | cut -d\  -f2 && python3 -m  http.server"
+
+# Git Shortcuts
+push() {
+        git add .
+        git commit -m "Update"
+        git push
+}
+alias push=push
+alias ps=push
+pull() {
+        git pull
+}
+alias pl=pull
+
+add(){
+        git add .
+}
+
