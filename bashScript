@@ -11,6 +11,8 @@ alias ser="cd /Users/arjun921/working_directory/rajasthan-server/server && sourc
 alias ser2="source activate raj && py /Users/arjun921/working_directory/rajScreenie/dummy_setup.py"
 alias pa="cd /Users/arjun921/working_directory/PA && source activate PA"
 alias http="ifconfig | grep "inet " | grep -v 127.0.0.1 | cut -d\  -f2 && python3 -m  http.server"
+alias pylen="find . -name "*.py" -type f -exec grep . {} \; | wc -l"
+
 # Git Shortcuts
 push() {
         git add .
