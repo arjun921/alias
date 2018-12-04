@@ -1,0 +1,61 @@
+export ANDROID_HOME=/Users/arjun921/Library/Android/sdk
+export PATH=${PATH}:/Users/arjun921/Library/Android/sdk/tools
+export PATH=${PATH}:/Users/arjun921/Library/Android/sdk/platform-tools
+export PUSHBULLET_KEY=o.pweWh6uDSBNVJgd74d0XB39Fn0JZHw5p
+#Homebrew
+export PATH=/Users/arjun921/anaconda3/envs/py3/bin/:$PATH
+
+#Custom Aliases
+alias pi="ssh pi@raspberrypi.local"
+alias pingpi="ping raspberrypi.local"
+alias apy="source activate idp3"
+alias cdw="cd ~/working_directory/"
+alias py="python3"
+alias nb="jupyter notebook"
+alias today="py /Users/arjun921/working_directory/refactored-lamp/dailyPrograms/today.py | pbcopy && cd $(pbpaste)"
+alias raj="cd /Users/arjun921/working_directory/rajasthan && atom ."
+alias ser="cd /Users/arjun921/working_directory/rajasthan-server/server && source activate raj && py server.py "
+alias ser2="source activate raj && py /Users/arjun921/working_directory/rajScreenie/dummy_setup.py"
+alias ey="cd /Users/arjun921/working_directory/ey_asset_management_v2"
+alias pa="cd /Users/arjun921/working_directory/PA && source activate PA"
+alias cdf="cd /Users/arjun921/working_directory/flobot-rest"
+alias pi="pip install"
+# Transfer.sh
+transfer() {
+    # write to output to tmpfile because of progress bar
+    tmpfile=$( mktemp -t transferXXX )
+    curl --progress-bar --upload-file $1 https://transfer.sh/$(basename $1) >> $tmpfile;
+    cat $tmpfile;
+    rm -f $tmpfile;
+}
+
+# Git Shortcuts
+alias transfer=transfer
+push() {
+	git add .
+	git commit -m "Update"
+	git push
+}
+alias push=push
+alias ps=push
+pull() {
+	git pull
+}
+alias pl=pull
+
+add(){
+	git add .
+}
+http(){
+	OUTPUT="http://"
+	OUTPUT+=$(ifconfig | grep "inet " | grep -v 127.0.0.1 | cut -d\  -f2)
+	OUTPUT+=":8000"
+	pb push $OUTPUT
+	python3 -m  http.server
+}
+alias http=http
+# Setting PATH for Python 3.6
+# The original version is saved in .bash_profile.pysave
+PATH="/Library/Frameworks/Python.framework/Versions/3.6/bin:${PATH}"
+export PATH
+source /Library/Frameworks/Python.framework/Versions/3.6/bin/activate.sh
